@@ -151,6 +151,8 @@ read_sh4x:
 	move r2,humi_csm
 	st r0,r2,0
 
+	/* return 0 */
+	move r0,0
 	ret
 
 /* 
