@@ -57,3 +57,6 @@ You may test it with this example code
 
 
 ## Credits
+
+Most credits went to Tom Vijlbrief and his i2c implementation I have based on (and fine tuned that from the wiki source).
+https://github.com/tomtor/ulp-i2c
