@@ -31,16 +31,35 @@
  *
  * ABI reference:
  *
- * r3 is reserved regiester = stack pointer
+ * r3 is reserved register = stack pointer
  *
  * Call conventions:
  * r0 is used as arg0
  * return value is stored in r0
  *
- * r1 is non-volatile regiester and is saved
+ * r1 is non-volatile register and is saved
  * r2 is volatile register and is not saved
  */
 
+/*
+ * For debugging purposes, you may define DEBUG and then all the regs will be
+ * saved on stack.
+ * To display the stack put this snippet to your code:
+ *
+ * printf("    addr   pc r  val\n");
+ * for(uint32_t* addr = &ulp_stack_begin ; addr<=&ulp_stack_end ; addr++) {
+ * 	printf("%x ", (uint32_t)addr);
+ * 	printf("%4x ", (uint32_t)*addr>>21);
+ * 	printf("%1x ", ((uint32_t)*addr>>16) & 0x3);
+ * 	printf("%4x\n", ((uint32_t)*addr) & 0xffff);
+ * }
+ *
+ * It is highly useful if your code crash/hang in some code path.
+ * You may also implement simple panic call, which will wake up the ESP32
+ * and stop the ULP (the same as when ULP ends).
+ * Than place call it on the place you want to examine.
+ *
+ */
 /*
 #define DEBUG
 */
